@@ -217,6 +217,9 @@ closeBtn.onclick = () => {
   modalContainer.classList.toggle("hide")
 };
 
+
+
+
 modalBtn.onclick = () => {
     const item = products.find((product) => product.id === +modalBtn.id);
     if (modalBtn.innerHTML === "Remove From Cart") {
