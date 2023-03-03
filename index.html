@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Products</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <h2>SHOPPING APP</h2>
+      </div>
+
+      <div class="cart">
+        <img src="./materials/cart.svg" alt="" />
+      </div>
+      <div class="cart-items hide">
+        <!-- render cart items here -->
+      </div>
+    </div>
+    <div class="main">
+      <div class="products">
+        <!-- render products  here -->
+      </div>
+      <div id="product-modal" class="modal hide">
+        <button class="x">x</button>
+        <div id="product" class="product">
+          <!-- render product modal  here -->
+          <div class="card">
+            <img class="img" src="" alt="" />
+            <div class="details">
+              <h3 class="name"></h3>
+              <p class="price"></p>
+            </div>
+            <div class="actions">
+              <button class="modal-btn"></button>
+              <!-- <button class="remove">remove</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./logic/products.js"></script>
+    <script src="./logic/app.js"></script>
+  </body>
+</html>
