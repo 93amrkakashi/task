@@ -4,39 +4,52 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./styles/styles.css" />
     <title>Products</title>
   </head>
   <body>
-    <div class="navbar">
-      <div class="logo">
-        <h2>SHOPPING APP</h2>
-      </div>
+    <div class="container">
+      <!-- navbar starts here -->
+      <div class="navbar">
+        <div class="logo">
+          <h2>SHOPPING APP</h2>
+        </div>
 
-      <div class="cart">
-        <img src="./materials/cart.svg" alt="" />
+        <div class="cart">
+          <!-- <img src="./materials/cart.svg" alt="" /> -->
+          <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+          <!-- <span class="count">0</span> -->
+        </div>
+        <div class="cart-items hide">
+          <!-- render cart items here -->
+        </div>
       </div>
-      <div class="cart-items hide">
-        <!-- render cart items here -->
-      </div>
-    </div>
-    <div class="main">
-      <div class="products">
-        <!-- render products  here -->
-      </div>
-      <div id="product-modal" class="modal hide">
-        <button class="x">x</button>
-        <div id="product" class="product">
-          <!-- render product modal  here -->
-          <div class="card">
-            <img class="img" src="" alt="" />
-            <div class="details">
-              <h3 class="name"></h3>
-              <p class="price"></p>
-            </div>
-            <div class="actions">
-              <button class="modal-btn"></button>
-              <!-- <button class="remove">remove</button> -->
+      <!-- main page starts here -->
+      <div class="main">
+        <div class="products-container">
+          <!-- render products  here -->
+        </div>
+        <div id="product-modal" class="modal hide">
+          <button class="x">x</button>
+          <div id="product" class="product">
+            <!-- render product modal  here -->
+            <div class="card">
+              <img class="img" src="" alt="" />
+              <div class="details">
+                <h3 class="name"></h3>
+                <p class="price"></p>
+              </div>
+              <div class="actions">
+                <button class="modal-btn"></button>
+                <!-- <button class="remove">remove</button> -->
+              </div>
             </div>
           </div>
         </div>

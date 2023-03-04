@@ -1,25 +1,28 @@
 // Getting important elements from the DOM
-const productsDiv = document.querySelector(".products");
+const productsDiv = document.querySelector(".products-container");
 const cartItemsDiv = document.querySelector(".cart-items");
-const cartImage = document.querySelector(".cart img");
+const cartIcon = document.querySelector(".cart i");
 const cartDiv = document.querySelector(".cart");
+const addBtn = document.querySelectorAll(".add");
 
+// cart array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
-
+// getting elements in cart ID's
 let elementsInCart = cart.map((cartEl) => {
   return cartEl.id;
 });
-console.log(elementsInCart);
 
-cartImage.onclick = () => {
+// show or hide cart dropdown
+cartIcon.onclick = () => {
   cartItemsDiv.classList.toggle("hide");
-  renderCart();
+  renderDropdown();
 };
 
+// *********************************************
+// the function that renders products in the DOM
 renderProdcuts = () => {
-  // productsDiv.innerHTML = "";
-
   products.forEach((product) => {
+    // creating elements
     let card = document.createElement("div");
     let image = document.createElement("img");
     let detailsDiv = document.createElement("div");
@@ -28,6 +31,7 @@ renderProdcuts = () => {
     let prodcutPrice = document.createElement("p");
     let addBtn = document.createElement("button");
     let showBtn = document.createElement("button");
+    // setting elements attrbuites
     image.src = product.product_image;
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
@@ -37,12 +41,14 @@ renderProdcuts = () => {
     showBtn.innerText = "Show Details";
     showBtn.className = "show";
     card.className = "card";
+
+    // chick if the element already in cart to set button inner text
     if (elementsInCart.includes(product.id)) {
       addBtn.innerText = "Remove From Cart";
     } else {
       addBtn.innerText = "Add To Cart";
     }
-
+    // appending elements to parents
     actionsDiv.appendChild(addBtn);
     actionsDiv.appendChild(showBtn);
     detailsDiv.appendChild(prodcutName);
@@ -51,49 +57,33 @@ renderProdcuts = () => {
     card.appendChild(detailsDiv);
     card.appendChild(actionsDiv);
     productsDiv.appendChild(card);
-
-    // productsDiv.innerHTML += `
-    // <div class="card">
-    //   <div class="photo"><img src="${product.product_image}" alt="${product.product_name}" /></div>
-    //   <div class="details">
-    //     <h3 class="product-name">${product.product_name}</h3>
-    //     <p class="product-price">${product.product_price} $</p>
-    //   </div>
-    //   <div class="actions">
-    //     <button class="add" onclick="addToCart(${product.id})" >Add To Cart</button>
-    //     <button class="details">Show Details</button>
-    //     <button class="remove hide">Remove From Cart</button>
-    //   </div>
-    // </div>
-    // `;
   });
 };
-renderProdcuts(productsDiv, products);
+renderProdcuts();
+// *********************************************
 
+
+
+// the function that updates cart after some actions
 function updateCart() {
   // save cart to local storage
   localStorage.setItem("CART", JSON.stringify(cart));
 
-  renderCart();
-  // renderProdcuts()
   productsCount.innerText = cart.length;
+  renderDropdown();
 }
 
-// cart array
 let productsCount = document.createElement("span");
 productsCount.innerText = cart.length;
 cartDiv.appendChild(productsCount);
 
-// *******************
-// actions
-// const addAndRemove =
-
-// *******************
-const addBtn = document.querySelectorAll(".add");
-// console.log(addBtn);
+// ******************************************************
+// making changes to buttons and elements
 addBtn.forEach((btn) => {
+  //1- choosing the element to adding actions to
   const item = products.find((product) => product.id === +btn.id);
   btn.onclick = () => {
+    //2- changing values and removing element from cart
     if (btn.innerHTML === "Remove From Cart") {
       btn.innerText = "Add To Cart";
       item.added_to_cart = false;
@@ -102,31 +92,38 @@ addBtn.forEach((btn) => {
       };
       removeItem(+btn.id);
       updateCart();
-    } else {
+    }
+    //9- changing values and adding element from cart
+    else {
       btn.innerHTML = "Remove From Cart";
       item.added_to_cart = true;
       cart.push(item);
     }
     updateCart();
-
-    console.log(cart);
   };
 });
+// ******************************************************
 
-renderCart = (element, content) => {
+
+
+// *******************************************************
+// the function that renders the Drobdown menue in the DOM
+renderDropdown = () => {
+  // 1- prevent element from repeating
   cartItemsDiv.innerHTML = "";
   cart.forEach((product) => {
+    // 2- creating elements
     let card = document.createElement("div");
     let image = document.createElement("img");
     let detailsDiv = document.createElement("div");
     let prodcutName = document.createElement("h3");
     let prodcutPrice = document.createElement("p");
-
+    //3- setting elements attrbuites
     image.src = product.product_image;
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
-
     card.className = "card";
+    //4- appending elements to parents
 
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
@@ -135,95 +132,55 @@ renderCart = (element, content) => {
     cartItemsDiv.appendChild(card);
   });
 };
-const modalDiv = document.getElementById("product");
+// *******************************************************
 
-let productName = document.querySelector('.name');
-let productPrice = document.querySelector('.price');
-let productImage = document.querySelector('.img');
-let modalBtn = document.querySelector('.modal-btn');
+
+
+
+// *******************************************************
+// rendering and make changes to elements with another method
+// 1- getting elements from the DOM
+let modalDiv = document.getElementById("product");
+let productName = document.querySelector(".name");
+let productPrice = document.querySelector(".price");
+let productImage = document.querySelector(".img");
+let modalBtn = document.querySelector(".modal-btn");
+let viewBtn = document.querySelectorAll(".show");
+let modalContainer = document.querySelector(".modal");
+//2- event click to of view button
+viewBtn.forEach((btn) => {
+  const item = products.find((product) => product.id === +btn.id);
+  btn.onclick = () => {
+    modalContainer.classList.toggle("hide");
+    renderModal(item);
+  };
+});
+
+// 3- a function to render modal
 const renderModal = (product) => {
-  modalBtn.id=product.id
+  modalBtn.id = product.id;
   productName.innerText = product.product_name;
   productPrice.innerText = product.product_price;
   productImage.src = product.product_image;
   if (product.added_to_cart == true) {
-    modalBtn.innerText = 'Remove From Cart'
-  } else{
-    modalBtn.innerText= 'Add To Cart'
+    modalBtn.innerText = "Remove From Cart";
+  } else {
+    modalBtn.innerText = "Add To Cart";
   }
-  
-  console.log(+modalBtn.id)
-
-  // modalDiv.innerHTML = "";
-
-  // let card = document.createElement("div");
-  // let image = document.createElement("img");
-  // let detailsDiv = document.createElement("div");
-  // let actionsDiv = document.createElement("div");
-  // let prodcutName = document.createElement("h3");
-  // let prodcutPrice = document.createElement("p");
-  // let addBtn = document.createElement("button");
-  // let closeBtn = document.createElement("button");
-  // image.src = product.product_image;
-
-  // prodcutName.innerHTML = product.product_name;
-  // prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
-  // addBtn.id = product.id;
-  // // showBtn.id = product.id;
-  // addBtn.className = "add";
-  // closeBtn.innerText = "x";
-  // closeBtn.className = "x";
-  // // showBtn.className = "show"
-  // card.className = "card";
-  // if (elementsInCart.includes(product.id)) {
-  //   addBtn.innerText = "Remove From Cart";
-  // } else {
-  //   addBtn.innerText = "Add To Cart";
-  // }
-
-  // actionsDiv.appendChild(addBtn);
-  // actionsDiv.appendChild(closeBtn);
-  // detailsDiv.appendChild(prodcutName);
-  // detailsDiv.appendChild(prodcutPrice);
-  // card.appendChild(image);
-  // card.appendChild(detailsDiv);
-  // card.appendChild(actionsDiv);
-  // modalDiv.appendChild(card);
-
-
 };
 
-
-// console.log(modalDiv)
-const viewBtn = document.querySelectorAll(".show");
-const modalContainer = document.querySelector('.modal')
-console.log(modalContainer)
-// console.log(viewBtn)
-viewBtn.forEach((btn) => {
-  const item = products.find((product) => product.id === +btn.id);
-  btn.onclick = () => {
-    console.log(addBtn);
-    // console.log(item)
-    modalContainer.classList.toggle("hide")
-    // modalDiv.innerHTML='';
-    renderModal(item);
-    // console.log(closeBtn)
-  };
-});
-
+//4- event click to of close button
 let closeBtn = document.querySelector(".x");
 closeBtn.onclick = () => {
-  console.log('jgjgjhgjh')
-  modalContainer.classList.toggle("hide")
+  modalContainer.classList.toggle("hide");
 };
 
-
-
-
+//5- event click for adding product to cart or delete
 modalBtn.onclick = () => {
-    const item = products.find((product) => product.id === +modalBtn.id);
-    if (modalBtn.innerHTML === "Remove From Cart") {
-    console.log(item)
+  //a- choosing the element to adding actions to
+  const item = products.find((product) => product.id === +modalBtn.id);
+  //b- changing values and removing element from cart
+  if (modalBtn.innerHTML === "Remove From Cart") {
     modalBtn.innerText = "Add To Cart";
     item.added_to_cart = false;
     removeItem = (id) => {
@@ -231,16 +188,12 @@ modalBtn.onclick = () => {
     };
     removeItem(+modalBtn.id);
     updateCart();
+  //c- changing values and adding element from cart
   } else {
     modalBtn.innerHTML = "Remove From Cart";
     item.added_to_cart = true;
     cart.push(item);
   }
   updateCart();
-
-  console.log(cart);
 };
-// console.log(closeBtn)
-// closeBtn.forEach((btn) => {
-  
-// });
+// *******************************************************
