@@ -15,36 +15,36 @@
     <title>Products</title>
   </head>
   <body>
-    <div class="container">
-      <!-- navbar starts here -->
-      <div class="navbar">
-        <div class="logo">
-          <h2>SHOPPING APP</h2>
-        </div>
-
-        <div class="cart">
-          <!-- <img src="./materials/cart.svg" alt="" /> -->
-          <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-          <!-- <span class="count">0</span> -->
-        </div>
-        <div class="cart-items hide">
-          <!-- render cart items here -->
-        </div>
+    <!-- navbar starts here -->
+    <div class="navbar glass">
+      <div class="logo">
+        <h2>SHOPPING APP</h2>
       </div>
-      <!-- main page starts here -->
-      <div class="main">
-        <div class="products-container">
-          <!-- render products  here -->
-        </div>
+
+      <div class="cart">
+        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+      </div>
+      <div class="cart-items glass hide">
+        <!-- render cart items here -->
+      </div>
+    </div>
+    <!-- main page starts here -->
+    <div class="main">
+      <div class="products-container">
+        <!-- render products  here -->
+      </div>
+      <div class="overlay hide">
         <div id="product-modal" class="modal hide">
           <button class="x">x</button>
           <div id="product" class="product">
             <!-- render product modal  here -->
             <div class="card">
-              <img class="img" src="" alt="" />
+              <div class="img">
+                <img class="photo" src="" alt="" />
+              </div>
               <div class="details">
                 <h3 class="name"></h3>
-                <p class="price"></p>
+                <p class="price">$</p>
               </div>
               <div class="actions">
                 <button class="modal-btn"></button>

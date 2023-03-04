@@ -3,7 +3,7 @@ const productsDiv = document.querySelector(".products-container");
 const cartItemsDiv = document.querySelector(".cart-items");
 const cartIcon = document.querySelector(".cart i");
 const cartDiv = document.querySelector(".cart");
-const addBtn = document.querySelectorAll(".add");
+const overlay = document.querySelector(".overlay")
 
 // cart array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
@@ -24,7 +24,9 @@ renderProdcuts = () => {
   products.forEach((product) => {
     // creating elements
     let card = document.createElement("div");
+    
     let image = document.createElement("img");
+    let imageDiv = document.createElement("div");
     let detailsDiv = document.createElement("div");
     let actionsDiv = document.createElement("div");
     let prodcutName = document.createElement("h3");
@@ -38,22 +40,24 @@ renderProdcuts = () => {
     addBtn.id = product.id;
     showBtn.id = product.id;
     addBtn.className = "add";
-    showBtn.innerText = "Show Details";
+    showBtn.innerText = "SHOW";
     showBtn.className = "show";
-    card.className = "card";
+    imageDiv.className = "img"
+    card.className = "card glass";
 
     // chick if the element already in cart to set button inner text
     if (elementsInCart.includes(product.id)) {
-      addBtn.innerText = "Remove From Cart";
+      addBtn.innerText = "REMOVE";
     } else {
-      addBtn.innerText = "Add To Cart";
+      addBtn.innerText = "ADD";
     }
     // appending elements to parents
     actionsDiv.appendChild(addBtn);
     actionsDiv.appendChild(showBtn);
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
-    card.appendChild(image);
+    imageDiv.appendChild(image)
+    card.appendChild(imageDiv);
     card.appendChild(detailsDiv);
     card.appendChild(actionsDiv);
     productsDiv.appendChild(card);
@@ -79,13 +83,14 @@ cartDiv.appendChild(productsCount);
 
 // ******************************************************
 // making changes to buttons and elements
+const addBtn = document.querySelectorAll(".add");
 addBtn.forEach((btn) => {
   //1- choosing the element to adding actions to
   const item = products.find((product) => product.id === +btn.id);
   btn.onclick = () => {
     //2- changing values and removing element from cart
-    if (btn.innerHTML === "Remove From Cart") {
-      btn.innerText = "Add To Cart";
+    if (btn.innerHTML === "REMOVE") {
+      btn.innerText = "ADD";
       item.added_to_cart = false;
       removeItem = (id) => {
         cart = cart.filter((item) => item.id !== id);
@@ -95,7 +100,7 @@ addBtn.forEach((btn) => {
     }
     //9- changing values and adding element from cart
     else {
-      btn.innerHTML = "Remove From Cart";
+      btn.innerHTML = "REMOVE";
       item.added_to_cart = true;
       cart.push(item);
     }
@@ -114,6 +119,8 @@ renderDropdown = () => {
   cart.forEach((product) => {
     // 2- creating elements
     let card = document.createElement("div");
+    let imageDiv = document.createElement("div");
+
     let image = document.createElement("img");
     let detailsDiv = document.createElement("div");
     let prodcutName = document.createElement("h3");
@@ -123,11 +130,13 @@ renderDropdown = () => {
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
     card.className = "card";
+    imageDiv.className = "img"
     //4- appending elements to parents
 
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
-    card.appendChild(image);
+    imageDiv.appendChild(image)
+    card.appendChild(imageDiv);
     card.appendChild(detailsDiv);
     cartItemsDiv.appendChild(card);
   });
@@ -143,36 +152,40 @@ renderDropdown = () => {
 let modalDiv = document.getElementById("product");
 let productName = document.querySelector(".name");
 let productPrice = document.querySelector(".price");
-let productImage = document.querySelector(".img");
+let productImage = document.querySelector(".photo");
 let modalBtn = document.querySelector(".modal-btn");
 let viewBtn = document.querySelectorAll(".show");
 let modalContainer = document.querySelector(".modal");
-//2- event click to of view button
-viewBtn.forEach((btn) => {
-  const item = products.find((product) => product.id === +btn.id);
-  btn.onclick = () => {
-    modalContainer.classList.toggle("hide");
-    renderModal(item);
-  };
-});
 
-// 3- a function to render modal
+// 2- a function to render modal
 const renderModal = (product) => {
   modalBtn.id = product.id;
   productName.innerText = product.product_name;
   productPrice.innerText = product.product_price;
   productImage.src = product.product_image;
   if (product.added_to_cart == true) {
-    modalBtn.innerText = "Remove From Cart";
+    modalBtn.innerText = "REMOVE";
   } else {
-    modalBtn.innerText = "Add To Cart";
+    modalBtn.innerText = "ADD";
   }
 };
+//3- event click to of view button
+viewBtn.forEach((btn) => {
+  const item = products.find((product) => product.id === +btn.id);
+  btn.onclick = () => {
+    modalContainer.classList.toggle("hide");
+    overlay.classList.toggle("hide");
+    renderModal(item);
+  };
+});
+
+
 
 //4- event click to of close button
 let closeBtn = document.querySelector(".x");
 closeBtn.onclick = () => {
   modalContainer.classList.toggle("hide");
+  overlay.classList.toggle("hide");
 };
 
 //5- event click for adding product to cart or delete
@@ -180,8 +193,8 @@ modalBtn.onclick = () => {
   //a- choosing the element to adding actions to
   const item = products.find((product) => product.id === +modalBtn.id);
   //b- changing values and removing element from cart
-  if (modalBtn.innerHTML === "Remove From Cart") {
-    modalBtn.innerText = "Add To Cart";
+  if (modalBtn.innerHTML === "REMOVE") {
+    modalBtn.innerText = "ADD";
     item.added_to_cart = false;
     removeItem = (id) => {
       cart = cart.filter((item) => item.id !== id);
@@ -190,7 +203,7 @@ modalBtn.onclick = () => {
     updateCart();
   //c- changing values and adding element from cart
   } else {
-    modalBtn.innerHTML = "Remove From Cart";
+    modalBtn.innerHTML = "REMOVE";
     item.added_to_cart = true;
     cart.push(item);
   }
