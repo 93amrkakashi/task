@@ -3,14 +3,6 @@
 /* .......... general settings ............. */
 :root {
   --main-color: #ffffff;
-  --main-shadow: 0 0 40px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff,
-    0 0 90px #ffffff;
-  --second-shadow: 0 0 10px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff,
-    0 0 50px #ffffff, 0 0 60px #ffffff;
-  --main-pic: url(pics/Premium\ Photo\ _\ Dark\ brick\ wall.jpg);
-  --glass-effict: linear-gradient(to top bottom,
-      rgba(255, 255, 255, 1),
-      rgba(12, 12, 12, 0.5));
   --border: 1px solid rgb(255, 255, 255);
 }
 
@@ -92,7 +84,7 @@ body {
   right: 0px;
   top: 65px;
   color: white;
-  width: 200px;
+  min-width: 200px;
   min-height: 300px;
   /* opacity: 0.8; */
   transition: all 1s;
@@ -100,7 +92,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex-direction: column;
   background-color: #000000;
   border: var(--border);
   padding: 10px;
@@ -126,7 +117,7 @@ body {
 
 .card {
   text-align: center;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--main-color);
   border-radius: 5px;
   width: 250px;
   height: 290px;
@@ -142,7 +133,6 @@ body {
 img {
   width: 100%;
   transition: all 0.5s;
-  /* z-index: 3; */
 }
 img:hover{
   transform: rotate(10deg)
@@ -156,7 +146,7 @@ button {
   outline: none;
   padding: 5px 12px;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: var(--main-color);
   color: black;
   border-radius: 8px;
   margin: 8px 3px;
@@ -201,14 +191,4 @@ button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-}
-
-.madal .product {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-
-  /* transform: translateX(-50%) ; */
-  z-index: 2;
-  background-color: rgba(255, 0, 0, 0.699);
 }

@@ -3,7 +3,7 @@ const productsDiv = document.querySelector(".products-container");
 const cartItemsDiv = document.querySelector(".cart-items");
 const cartIcon = document.querySelector(".cart i");
 const cartDiv = document.querySelector(".cart");
-const overlay = document.querySelector(".overlay")
+const overlay = document.querySelector(".overlay");
 
 // cart array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
@@ -24,7 +24,7 @@ renderProdcuts = () => {
   products.forEach((product) => {
     // creating elements
     let card = document.createElement("div");
-    
+
     let image = document.createElement("img");
     let imageDiv = document.createElement("div");
     let detailsDiv = document.createElement("div");
@@ -42,7 +42,7 @@ renderProdcuts = () => {
     addBtn.className = "add";
     showBtn.innerText = "SHOW";
     showBtn.className = "show";
-    imageDiv.className = "img"
+    imageDiv.className = "img";
     card.className = "card glass";
 
     // chick if the element already in cart to set button inner text
@@ -56,7 +56,7 @@ renderProdcuts = () => {
     actionsDiv.appendChild(showBtn);
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
-    imageDiv.appendChild(image)
+    imageDiv.appendChild(image);
     card.appendChild(imageDiv);
     card.appendChild(detailsDiv);
     card.appendChild(actionsDiv);
@@ -65,8 +65,6 @@ renderProdcuts = () => {
 };
 renderProdcuts();
 // *********************************************
-
-
 
 // the function that updates cart after some actions
 function updateCart() {
@@ -109,8 +107,6 @@ addBtn.forEach((btn) => {
 });
 // ******************************************************
 
-
-
 // *******************************************************
 // the function that renders the Drobdown menue in the DOM
 renderDropdown = () => {
@@ -130,21 +126,18 @@ renderDropdown = () => {
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
     card.className = "card";
-    imageDiv.className = "img"
+    imageDiv.className = "img";
     //4- appending elements to parents
 
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
-    imageDiv.appendChild(image)
+    imageDiv.appendChild(image);
     card.appendChild(imageDiv);
     card.appendChild(detailsDiv);
     cartItemsDiv.appendChild(card);
   });
 };
 // *******************************************************
-
-
-
 
 // *******************************************************
 // rendering and make changes to elements with another method
@@ -179,8 +172,6 @@ viewBtn.forEach((btn) => {
   };
 });
 
-
-
 //4- event click to of close button
 let closeBtn = document.querySelector(".x");
 closeBtn.onclick = () => {
@@ -201,7 +192,7 @@ modalBtn.onclick = () => {
     };
     removeItem(+modalBtn.id);
     updateCart();
-  //c- changing values and adding element from cart
+    //c- changing values and adding element from cart
   } else {
     modalBtn.innerHTML = "REMOVE";
     item.added_to_cart = true;
