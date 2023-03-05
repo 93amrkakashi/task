@@ -111,6 +111,9 @@ addBtn.forEach((btn) => {
 renderDropdown = () => {
   // 1- prevent element from repeating
   cartItemsDiv.innerHTML = "";
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML = "No Items In The Cart";
+  }
   cart.forEach((product) => {
     // 2- creating elements
     let card = document.createElement("div");
