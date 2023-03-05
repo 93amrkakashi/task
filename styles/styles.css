@@ -92,7 +92,7 @@ body {
   right: 0px;
   top: 65px;
   color: white;
-  width: 200px;
+  min-width: 200px;
   min-height: 300px;
   /* opacity: 0.8; */
   transition: all 1s;
@@ -100,7 +100,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex-direction: column;
+  /* flex-direction: column; */
   background-color: #000000;
   border: var(--border);
   padding: 10px;
