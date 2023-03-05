@@ -1,4 +1,4 @@
-// Getting important elements from the DOM
+// Getting some important elements from the DOM
 const productsDiv = document.querySelector(".products-container");
 const cartItemsDiv = document.querySelector(".cart-items");
 const cartIcon = document.querySelector(".cart i");
@@ -12,7 +12,7 @@ let elementsInCart = cart.map((cartEl) => {
   return cartEl.id;
 });
 
-// show or hide cart dropdown
+// show & hide cart dropdown
 cartIcon.onclick = () => {
   cartItemsDiv.classList.toggle("hide");
   renderDropdown();
@@ -22,9 +22,8 @@ cartIcon.onclick = () => {
 // the function that renders products in the DOM
 renderProdcuts = () => {
   products.forEach((product) => {
-    // creating elements
+    //1- creating elements
     let card = document.createElement("div");
-
     let image = document.createElement("img");
     let imageDiv = document.createElement("div");
     let detailsDiv = document.createElement("div");
@@ -33,7 +32,7 @@ renderProdcuts = () => {
     let prodcutPrice = document.createElement("p");
     let addBtn = document.createElement("button");
     let showBtn = document.createElement("button");
-    // setting elements attrbuites
+    //2- setting elements attrbuites
     image.src = product.product_image;
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
@@ -45,13 +44,13 @@ renderProdcuts = () => {
     imageDiv.className = "img";
     card.className = "card glass";
 
-    // chick if the element already in cart to set button inner text
+    //3- chick if the element already in cart to set button inner text
     if (elementsInCart.includes(product.id)) {
       addBtn.innerText = "REMOVE";
     } else {
       addBtn.innerText = "ADD";
     }
-    // appending elements to parents
+    //4- appending elements to parents
     actionsDiv.appendChild(addBtn);
     actionsDiv.appendChild(showBtn);
     detailsDiv.appendChild(prodcutName);
@@ -66,7 +65,7 @@ renderProdcuts = () => {
 renderProdcuts();
 // *********************************************
 
-// the function that updates cart after some actions
+// the function that updates cart after actions
 function updateCart() {
   // save cart to local storage
   localStorage.setItem("CART", JSON.stringify(cart));
@@ -74,19 +73,19 @@ function updateCart() {
   productsCount.innerText = cart.length;
   renderDropdown();
 }
-
+// products count span
 let productsCount = document.createElement("span");
 productsCount.innerText = cart.length;
 cartDiv.appendChild(productsCount);
 
-// ******************************************************
+// ************************************************
 // making changes to buttons and elements
 const addBtn = document.querySelectorAll(".add");
 addBtn.forEach((btn) => {
-  //1- choosing the element to adding actions to
+  //1- choosing the element which adding actions to
   const item = products.find((product) => product.id === +btn.id);
   btn.onclick = () => {
-    //2- changing values and removing element from cart
+    //2- removing element from cart
     if (btn.innerHTML === "REMOVE") {
       btn.innerText = "ADD";
       item.added_to_cart = false;
@@ -96,7 +95,7 @@ addBtn.forEach((btn) => {
       removeItem(+btn.id);
       updateCart();
     }
-    //9- changing values and adding element from cart
+    //9- adding element from cart
     else {
       btn.innerHTML = "REMOVE";
       item.added_to_cart = true;
@@ -108,7 +107,7 @@ addBtn.forEach((btn) => {
 // ******************************************************
 
 // *******************************************************
-// the function that renders the Drobdown menue in the DOM
+// the function that renders the Drobdown menu in the DOM
 renderDropdown = () => {
   // 1- prevent element from repeating
   cartItemsDiv.innerHTML = "";
@@ -116,7 +115,6 @@ renderDropdown = () => {
     // 2- creating elements
     let card = document.createElement("div");
     let imageDiv = document.createElement("div");
-
     let image = document.createElement("img");
     let detailsDiv = document.createElement("div");
     let prodcutName = document.createElement("h3");
@@ -128,7 +126,6 @@ renderDropdown = () => {
     card.className = "card";
     imageDiv.className = "img";
     //4- appending elements to parents
-
     detailsDiv.appendChild(prodcutName);
     detailsDiv.appendChild(prodcutPrice);
     imageDiv.appendChild(image);
@@ -140,7 +137,7 @@ renderDropdown = () => {
 // *******************************************************
 
 // *******************************************************
-// rendering and make changes to elements with another method
+// rendering and making changes to elements with "another method"
 // 1- getting elements from the DOM
 let modalDiv = document.getElementById("product");
 let productName = document.querySelector(".name");
@@ -162,7 +159,7 @@ const renderModal = (product) => {
     modalBtn.innerText = "ADD";
   }
 };
-//3- event click to of view button
+//3- event click for view button
 viewBtn.forEach((btn) => {
   const item = products.find((product) => product.id === +btn.id);
   btn.onclick = () => {
@@ -172,14 +169,14 @@ viewBtn.forEach((btn) => {
   };
 });
 
-//4- event click to of close button
+//4- event click for close button
 let closeBtn = document.querySelector(".x");
 closeBtn.onclick = () => {
   modalContainer.classList.toggle("hide");
   overlay.classList.toggle("hide");
 };
 
-//5- event click for adding product to cart or delete
+//5- event click for adding product to cart or delete it
 modalBtn.onclick = () => {
   //a- choosing the element to adding actions to
   const item = products.find((product) => product.id === +modalBtn.id);
@@ -201,3 +198,26 @@ modalBtn.onclick = () => {
   updateCart();
 };
 // *******************************************************
+
+
+// let navbar = document.querySelector('.navbar')
+// // function hi (){
+// //   if (window.scrollY >= navOffset+40) {
+// //     console.log("hiiiiiiiii");
+// //     navBar.classList.add("mini");
+// //     navBar.classList.remove("glass");
+// //   } else{
+// //     navBar.classList.remove("mini")
+// //     navBar.classList.add("glass");
+// //   }
+// // }
+// window.addEventListener("scroll",() =>{
+//   if (window.scrollY >= navbar.offsetTop+5) {
+//     console.log("hiiiiiiiii");
+//     navbar.classList.toggle("mini");
+//     navbar.classList.remove("glass");
+//   } else{
+//     navbar.classList.remove("mini")
+//     navbar.classList.add("glass");
+//   }
+// });

@@ -15,7 +15,8 @@
     <title>Products</title>
   </head>
   <body>
-    <div class="navbar glass">
+    <!-- navbar starts here -->
+    <nav class="navbar glass">
       <div class="logo">
         <h2>SHOPPING APP</h2>
       </div>
@@ -24,25 +25,29 @@
         <i class="fa-sharp fa-solid fa-cart-shopping"></i>
       </div>
       <div class="cart-items glass hide">
-        <!-- render cart items here -->
+        <!--  cart items renders here -->
       </div>
-    </div>
+    </nav>
+    <!-- navbar ends here -->
+
+<!-- ******************************************************** -->
+
+    <!-- main content starts here -->
     <div class="main">
       <div class="products-container">
-        <!-- render products  here -->
+        <!-- products renders  here -->
       </div>
       <div class="overlay hide">
         <div id="product-modal" class="modal hide">
           <button class="x">x</button>
           <div id="product" class="product">
-            <!-- render product modal  here -->
             <div class="card">
               <div class="img">
                 <img class="photo" src="" alt="" />
               </div>
               <div class="details">
                 <h3 class="name"></h3>
-                <p class="price">$</p>
+                <p class="price"></p>
               </div>
               <div class="actions">
                 <button class="modal-btn"></button>
@@ -52,6 +57,7 @@
         </div>
       </div>
     </div>
+    <!-- main content ends here -->
 
     <script src="./logic/products.js"></script>
     <script src="./logic/app.js"></script>

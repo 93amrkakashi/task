@@ -20,7 +20,26 @@ body {
   scroll-behavior: smooth;
   background-color: #1a1818;
   max-width: 100vw;
+  height: 100vh;
+}
+
+body::after,
+.main::after {
+  content: '';
+  width: 100%;
   min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -2;
+  background-image: url("https://t3.ftcdn.net/jpg/05/73/51/48/360_F_573514898_spiDXJ20fWq3AHhCLgFplmyhkxRzsmbH.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: grayscale(50%);
+
 }
 
 .glass {
@@ -35,6 +54,8 @@ body {
   box-shadow: inset 0 0 4px #a7a6a6, 0 0 12px #a7a6a6;
 }
 
+/* .......... navbar styles ............. */
+
 .navbar {
   display: flex;
   padding: 5px 12px;
@@ -46,6 +67,24 @@ body {
   margin: 5px auto;
   transition: all 0.5s ease 0s;
   border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 3%;
+  z-index: 99999999;
+  background-color: #000000da;
+
+
+}
+
+.mini {
+  transition: all 0.8s;
+  position: sticky;
+  height: 40px;
+  width: 95%;
+  top: 3px;
+  z-index: 9999999;
+  background-color: #000000da;
+  border: var(--border);
 }
 
 .navbar .cart {
@@ -84,24 +123,27 @@ body {
   right: 0px;
   top: 65px;
   color: white;
-  min-width: 200px;
+  max-width: 400px;
   min-height: 300px;
   transition: all 1s;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   background-color: #000000;
   border: var(--border);
   padding: 10px;
   border-radius: 10px;
-    z-index: 99;
+  z-index: 99;
 }
 
 .cart-items .card {
   width: 150px;
   height: 160px;
 }
+
+/* .......... main content styles ............. */
 
 .products-container {
   width: 100%;
@@ -111,35 +153,40 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  margin-top: 80px;
 }
 
 .card {
   text-align: center;
   border: 1px solid var(--main-color);
   border-radius: 5px;
-  width: 250px;
-  height: 290px;
+  width: 220px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
 }
-.img{
+
+.img {
   overflow: hidden;
 }
+
 img {
   width: 100%;
   transition: all 0.5s;
 }
-img:hover{
-  transform: rotate(10deg)
-  scale(1.4);
+
+img:hover {
+  transform: rotate(10deg) scale(1.4);
 }
-.details{
+
+.details {
   z-index: 5;
 }
+
 button {
   border: none;
   outline: none;
@@ -160,7 +207,8 @@ button {
 .main {
   position: relative;
 }
-.overlay{
+
+.overlay {
   min-height: 100vh;
   min-width: 100%;
   background-color: #000000d0;
@@ -169,6 +217,7 @@ button {
   top: 0;
   z-index: 99999999;
 }
+
 .modal {
   position: absolute;
   top: 10%;
@@ -183,11 +232,18 @@ button {
   border-radius: 15px;
 }
 
-.x{
+.x {
   position: absolute;
-    top: -25px;
-    right: -15px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+  top: -25px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+@media (max-width: 500px) {
+  .cart-items {
+    width: 350px;
+  }
+
 }
