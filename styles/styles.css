@@ -2,57 +2,38 @@
 
 /* .......... general settings ............. */
 :root {
-  --main-color: #ffffff;
-  --border: 1px solid rgb(255, 255, 255);
+  --text-color: #4299e1;
+  --light-bg1: #a0aec0;
+  --light-bg2: #e2e8f0;
+  --dark-bg1: #171923;
+  --dark-bg2: #2d3748;
+  --btn-color: #4299e1;
+  --btn-hover: #3182ce;
 }
 
 * {
-  color: var(--main-color);
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  transition: all 0.5s ease 0s;
+
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
-  background-color: #1a1818;
+  color: var(--text-color);
   max-width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
+  font-family: "Poppins", sans-serif;
+  background-color: var(--dark-bg2);
 }
 
-
-.main::after {
-  content: '';
-  width: 100%;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: -2;
-  background-image: url("https://t3.ftcdn.net/jpg/05/73/51/48/360_F_573514898_spiDXJ20fWq3AHhCLgFplmyhkxRzsmbH.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: grayscale(50%);
-
+.light {
+  background-color: var(--light-bg2);
+  border: 1px solid var(--light-bg1);
+  color: var(--dark-bg1);
 }
 
-.glass {
-  background: linear-gradient(to right bottom,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0));
-  border: 1px solid rgb(193 189 189);
-  transition: all 0.3s;
-}
-
-.glass:hover {
-  box-shadow: inset 0 0 4px #a7a6a6, 0 0 12px #a7a6a6;
-}
 
 /* .......... navbar styles ............. */
 
@@ -65,17 +46,19 @@ body {
   height: 60px;
   width: 94%;
   margin: 5px auto;
-  transition: all 0.5s ease 0s;
   border-radius: 10px;
   position: fixed;
   top: 0;
   left: 3%;
   z-index: 99999999;
-  background-color: #000000da;
-
-
+  background-color: var(--dark-bg1);
 }
 
+.dark .navbar {}
+
+.light .navbar {
+  background-color: var(--light-bg1);
+}
 
 .navbar .cart {
   width: 60px;
@@ -100,8 +83,8 @@ body {
   font-weight: 600;
   background-color: white;
   width: 20px;
-  color: black;
-  border: 2px solid black;
+  color: var(--dark-bg1);
+  border: 2px solid var(--dark-bg1);
   height: 20px;
   border-radius: 50%;
   line-height: 1;
@@ -115,14 +98,13 @@ body {
   color: white;
   max-width: 400px;
   min-height: 300px;
-  transition: all 1s;
+  /* transition: all 1s; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  background-color: #000000;
-  border: var(--border);
+  background-color: var(--dark-bg1);
   padding: 10px;
   border-radius: 10px;
   z-index: 99;
@@ -131,6 +113,11 @@ body {
 .cart-items .card {
   width: 150px;
   height: 160px;
+  border: 1px solid var(--light-bg2);
+}
+
+.light .cart-items {
+  background-color: var(--light-bg1);
 }
 
 /* .......... main content styles ............. */
@@ -149,7 +136,7 @@ body {
 
 .card {
   text-align: center;
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--light-bg2);
   border-radius: 5px;
   width: 220px;
   height: 270px;
@@ -161,33 +148,39 @@ body {
   margin: 8px auto;
 }
 
+.light .card {
+  border-color: var(--dark-bg1);
+}
+
 .img {
   overflow: hidden;
 }
 
 img {
   width: 100%;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 img:hover {
   transform: rotate(10deg) scale(1.4);
 }
 
-.details {
-  z-index: 5;
-}
+
 
 button {
   border: none;
   outline: none;
   padding: 5px 12px;
   cursor: pointer;
-  background-color: var(--main-color);
-  color: black;
+  background-color: var(--btn-color);
+  color: rgb(53, 52, 52);
   border-radius: 8px;
   margin: 8px 3px;
   width: 90px;
+}
+
+button:hover {
+  background-color: var(--btn-hover);
 }
 
 .hide {
@@ -210,17 +203,20 @@ button {
 }
 
 .modal {
-  position: absolute;
-  top: 10%;
+  position: fixed;
+  top: 25%;
   left: 50%;
-  width: 50%;
+  width: 450px;
   height: 400px;
   transform: translate(-50%);
-  background-color: #000000e0;
+  background-color: var(--dark-bg1);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
+}
+.light .modal{
+  background-color: var(--light-bg1);
 }
 
 .x {
@@ -230,6 +226,17 @@ button {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+}
+
+.theme {
+  z-index: 999999;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
 }
 
 @media (max-width: 500px) {

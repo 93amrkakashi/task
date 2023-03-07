@@ -19,7 +19,7 @@ cartIcon.onclick = () => {
 };
 
 // *********************************************
-// the function that renders products in the DOM
+// rendering products in the DOM with the {{{first method}}}
 renderProdcuts = () => {
   products.forEach((product) => {
     //1- creating elements
@@ -107,40 +107,34 @@ addBtn.forEach((btn) => {
 // ******************************************************
 
 // *******************************************************
-// the function that renders the Drobdown menu in the DOM
+// rendering the Drobdown menu in the DOM with {{{another method}}}
 renderDropdown = () => {
-  // 1- prevent element from repeating
+  // 1- reset container div inner html
   cartItemsDiv.innerHTML = "";
+  // check if there is elements in cart
   if (cart.length === 0) {
     cartItemsDiv.innerHTML = "No Items In The Cart";
   }
+  // 3- rendering elements in cart
   cart.forEach((product) => {
-    // 2- creating elements
-    let card = document.createElement("div");
-    let imageDiv = document.createElement("div");
-    let image = document.createElement("img");
-    let detailsDiv = document.createElement("div");
-    let prodcutName = document.createElement("h3");
-    let prodcutPrice = document.createElement("p");
-    //3- setting elements attrbuites
-    image.src = product.product_image;
-    prodcutName.innerHTML = product.product_name;
-    prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
-    card.className = "card";
-    imageDiv.className = "img";
-    //4- appending elements to parents
-    detailsDiv.appendChild(prodcutName);
-    detailsDiv.appendChild(prodcutPrice);
-    imageDiv.appendChild(image);
-    card.appendChild(imageDiv);
-    card.appendChild(detailsDiv);
-    cartItemsDiv.appendChild(card);
+    let cardss = `
+    <div class="card">
+      <div class="img">
+        <img src="${product.product_image}" alt="${product.product_name}">
+      </div>
+      <div>
+        <h3>${product.product_name}</h3>
+        <p>price: ${product.product_price}$</p>
+      </div>
+    </div>
+    `;
+    cartItemsDiv.innerHTML += cardss;
   });
 };
 // *******************************************************
 
 // *******************************************************
-// rendering and making changes to elements with "another method"
+// rendering and making changes to elements with {{{another method}}}
 // 1- getting elements from the DOM
 let modalDiv = document.getElementById("product");
 let productName = document.querySelector(".name");
@@ -202,25 +196,12 @@ modalBtn.onclick = () => {
 };
 // *******************************************************
 
+// dark & light theme toggle
+let toggleTheme = document.querySelector(".theme"),
+  body = document.querySelector(".dark"),
+  navBar = document.querySelector(".navbar");
 
-// let navbar = document.querySelector('.navbar')
-// // function hi (){
-// //   if (window.scrollY >= navOffset+40) {
-// //     console.log("hiiiiiiiii");
-// //     navBar.classList.add("mini");
-// //     navBar.classList.remove("glass");
-// //   } else{
-// //     navBar.classList.remove("mini")
-// //     navBar.classList.add("glass");
-// //   }
-// // }
-// window.addEventListener("scroll",() =>{
-//   if (window.scrollY >= navbar.offsetTop+5) {
-//     console.log("hiiiiiiiii");
-//     navbar.classList.toggle("mini");
-//     navbar.classList.remove("glass");
-//   } else{
-//     navbar.classList.remove("mini")
-//     navbar.classList.add("glass");
-//   }
-// });
+toggleTheme.onclick = () => {
+  body.classList.toggle("light");
+  navBar.classList.toggle("light");
+};
