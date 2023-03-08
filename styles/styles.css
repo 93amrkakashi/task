@@ -3,6 +3,7 @@
 /* .......... general settings ............. */
 :root {
   --text-color: #4299e1;
+  --text-color2: #ffffff;
   --light-bg1: #a0aec0;
   --light-bg2: #e2e8f0;
   --dark-bg1: #171923;
@@ -21,7 +22,7 @@
 }
 
 body {
-  color: var(--text-color);
+  color: var(--text-color2);
   max-width: 100vw;
   /* height: 100vh; */
   font-family: "Poppins", sans-serif;
@@ -54,8 +55,6 @@ body {
   background-color: var(--dark-bg1);
 }
 
-.dark .navbar {}
-
 .light .navbar {
   background-color: var(--light-bg1);
 }
@@ -81,7 +80,7 @@ body {
   display: inline-block;
   font-size: 15px;
   font-weight: 600;
-  background-color: white;
+  background-color: var(--text-color2);
   width: 20px;
   color: var(--dark-bg1);
   border: 2px solid var(--dark-bg1);
@@ -95,10 +94,9 @@ body {
   position: absolute;
   right: 0px;
   top: 65px;
-  color: white;
+  color: var(--text-color2);
   max-width: 400px;
   min-height: 300px;
-  /* transition: all 1s; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,6 +116,7 @@ body {
 
 .light .cart-items {
   background-color: var(--light-bg1);
+  color: var(--dark-bg1);
 }
 
 /* .......... main content styles ............. */
@@ -158,7 +157,6 @@ body {
 
 img {
   width: 100%;
-  /* transition: all 0.5s; */
 }
 
 img:hover {
@@ -173,10 +171,16 @@ button {
   padding: 5px 12px;
   cursor: pointer;
   background-color: var(--btn-color);
-  color: rgb(53, 52, 52);
+  color: var(--dark-bg1);
   border-radius: 8px;
   margin: 8px 3px;
   width: 90px;
+  color: var(--text-color2);
+  font-weight: 600;
+}
+
+.light button {
+  color: var(--dark-bg1);
 }
 
 button:hover {
@@ -215,7 +219,8 @@ button:hover {
   align-items: center;
   border-radius: 15px;
 }
-.light .modal{
+
+.light .modal {
   background-color: var(--light-bg1);
 }
 

@@ -1,9 +1,9 @@
 // Getting some important elements from the DOM
-const productsDiv = document.querySelector(".products-container");
-const cartItemsDiv = document.querySelector(".cart-items");
-const cartIcon = document.querySelector(".cart i");
-const cartDiv = document.querySelector(".cart");
-const overlay = document.querySelector(".overlay");
+const productsDiv = document.querySelector(".products-container"),
+      cartItemsDiv = document.querySelector(".cart-items"),
+      cartIcon = document.querySelector(".cart i"),
+      cartDiv = document.querySelector(".cart"),
+      overlay = document.querySelector(".overlay");
 
 // cart array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
@@ -19,8 +19,9 @@ cartIcon.onclick = () => {
 };
 
 // *********************************************
-// rendering products in the DOM with the {{{first method}}}
+// rendering products in the DOM {{{first method}}}
 renderProdcuts = () => {
+  productsDiv.innerHTML = "";
   products.forEach((product) => {
     //1- creating elements
     let card = document.createElement("div");
@@ -28,7 +29,7 @@ renderProdcuts = () => {
     let imageDiv = document.createElement("div");
     let detailsDiv = document.createElement("div");
     let actionsDiv = document.createElement("div");
-    let prodcutName = document.createElement("h3");
+    let prodcutName = document.createElement("h4");
     let prodcutPrice = document.createElement("p");
     let addBtn = document.createElement("button");
     let showBtn = document.createElement("button");
@@ -123,8 +124,8 @@ renderDropdown = () => {
         <img src="${product.product_image}" alt="${product.product_name}">
       </div>
       <div>
-        <h3>${product.product_name}</h3>
-        <p>price: ${product.product_price}$</p>
+        <h4>${product.product_name}</h4>
+        <p>price : ${product.product_price}$</p>
       </div>
     </div>
     `;
@@ -136,13 +137,13 @@ renderDropdown = () => {
 // *******************************************************
 // rendering and making changes to elements with {{{another method}}}
 // 1- getting elements from the DOM
-let modalDiv = document.getElementById("product");
-let productName = document.querySelector(".name");
-let productPrice = document.querySelector(".price");
-let productImage = document.querySelector(".photo");
-let modalBtn = document.querySelector(".modal-btn");
-let viewBtn = document.querySelectorAll(".show");
-let modalContainer = document.querySelector(".modal");
+let modalDiv = document.getElementById("product"),
+    productName = document.querySelector(".name"),
+    productPrice = document.querySelector(".price"),
+    productImage = document.querySelector(".photo"),
+    modalBtn = document.querySelector(".modal-btn"),
+    viewBtn = document.querySelectorAll(".show"),
+    modalContainer = document.querySelector(".modal");
 
 // 2- a function to render modal
 const renderModal = (product) => {
@@ -201,7 +202,14 @@ let toggleTheme = document.querySelector(".theme"),
   body = document.querySelector(".dark"),
   navBar = document.querySelector(".navbar");
 
+toggleTheme.innerHTML = "🌞";
 toggleTheme.onclick = () => {
+  if (body.className === "body dark") {
+    toggleTheme.innerHTML = "🌙";
+  } else {
+    toggleTheme.innerHTML = "🌞";
+  }
   body.classList.toggle("light");
   navBar.classList.toggle("light");
 };
+
