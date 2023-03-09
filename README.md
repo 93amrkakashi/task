@@ -46,25 +46,32 @@ Knowing that any change is made, affects the rest of the elements.
 - The second folder contains the **CSS** file.
 
 # Screenshots for project.
-1- full screen in dark mood:-
+
+1- performance, accesability and seo :-
+
+![enter image description here](https://i.ibb.co/NY5wrrr/performance.png)
+
+
+2- full screen in dark mood:-
+
 ![enter image description here](https://i.ibb.co/nCRq3KC/dark.png)
 
-2- full screen in light mood :-
+3- full screen in light mood :-
+
 ![enter image description here](https://i.ibb.co/rcrCYMM/light.png)
 
-3- mobile screen :-
+4- mobile screen :-
 
 ![enter image description here](https://i.ibb.co/YtVyM7Z/mobile.png)
 
-4-  modal view  :-
+5-  modal view  :-
 
 ![enter image description here](https://i.ibb.co/BwMHtrx/modal.png)
 
-5- Dropdown menu :-
+6- Dropdown menu :-
 
 ![enter image description here](https://i.ibb.co/ZGw5D1G/dropdown.png)
-6- performance, accesability and seo :-
 
-![enter image description here](https://i.ibb.co/NY5wrrr/performance.png)
+
 
 # Thanks :)
