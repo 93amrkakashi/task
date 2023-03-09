@@ -53,14 +53,18 @@ Knowing that any change is made, affects the rest of the elements.
 ![enter image description here](https://i.ibb.co/rcrCYMM/light.png)
 
 3- mobile screen :-
+
 ![enter image description here](https://i.ibb.co/YtVyM7Z/mobile.png)
 
 4-  modal view  :-
+
 ![enter image description here](https://i.ibb.co/BwMHtrx/modal.png)
 
 5- Dropdown menu :-
+
 ![enter image description here](https://i.ibb.co/ZGw5D1G/dropdown.png)
 6- performance, accesability and seo :-
+
 ![enter image description here](https://i.ibb.co/NY5wrrr/performance.png)
 
 # Thanks :)
