@@ -35,6 +35,7 @@ renderProdcuts = () => {
     let showBtn = document.createElement("button");
     //2- setting elements attrbuites
     image.src = product.product_image;
+    image.alt = product.product_name;
     prodcutName.innerHTML = product.product_name;
     prodcutPrice.innerHTML = `Price: ${product.product_price} $`;
     addBtn.id = product.id;
@@ -151,6 +152,7 @@ const renderModal = (product) => {
   productName.innerText = product.product_name;
   productPrice.innerText = product.product_price;
   productImage.src = product.product_image;
+  productImage.alt = product.product_name;
   if (product.added_to_cart == true) {
     modalBtn.innerText = "REMOVE";
   } else {
