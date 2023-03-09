@@ -8,8 +8,8 @@
   --light-bg2: #e2e8f0;
   --dark-bg1: #171923;
   --dark-bg2: #2d3748;
-  --btn-color: #4299e1;
-  --btn-hover: #3182ce;
+  --btn-color: #2A4467;
+  --btn-hover: #1b2c42;
 }
 
 * {
@@ -179,9 +179,9 @@ button {
   font-weight: 600;
 }
 
-.light button {
+/* .light button {
   color: var(--dark-bg1);
-}
+} */
 
 button:hover {
   background-color: var(--btn-hover);
