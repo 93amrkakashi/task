@@ -4,7 +4,7 @@ const products = [
     product_name: "Audio Cable",
     product_price: "9",
     product_image:
-      "https://firebasestorage.googleapis.com/v0/b/shopping-app-cd303.appspot.com/o/products%2F3502c776-a794-44c9-a45d-a22e7eaa878f?alt=media&token=bdb65069-41e4-417b-b468-982c964c1726",
+      "../images/cable.png",
     added_to_cart: false,
   },
   {
@@ -12,7 +12,7 @@ const products = [
     product_name: "Smart Watch",
     product_price: "21.9",
     product_image:
-      "https://firebasestorage.googleapis.com/v0/b/shopping-app-cd303.appspot.com/o/products%2F3a6cdd22-7d40-4af4-8a96-61e4a1783702?alt=media&token=fe94701e-04c2-411f-abfe-65d9c6c34a3d",
+      "../images/head-ohones.png",
     added_to_cart: false,
   },
   {
